@@ -41,13 +41,13 @@ const html = await eta.renderAsync("index.md", { title: "Policy" });
 
 ---
 
-### Transformer Signature
+### Transform Signature
 
 ```ts
 ((content:·string,·filename:·string)·=>·string);
 ```
 
-- `content`: loaded file contents
+- `content`: loaded raw file contents
 - `filename`: normalized absolute path
 
 Return transformed string or original content.

@@ -1,6 +1,6 @@
 {
   "name": "@vralle/eta-hooked",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fork of Eta.js with hookable load content transformers.",
   "license": "MIT",
   "keywords": [

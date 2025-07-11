@@ -1,19 +1,28 @@
 import { Eta, type EtaConfig, EtaFileResolutionError } from "eta";
 import { readFileSync } from "node:fs";
 
-export type Transformer = (str: string, filename: string) => string;
+/**
+ * Content transformation hook.
+ * Receives the raw content of a file and its absolute path, then returns the transformed string.
+ * Common use cases include Markdown/MDX-to-HTML conversion, applying syntax highlighting, or injecting metadata.
+ * Implementations may use file extension to determine transformation strategy.
+ * @param str The raw content of the file
+ * @param filename The full path to the file
+ * @returns Transformed content as a string
+ */
+export type Transform = (str: string, filename: string) => string;
 
 export interface EtaHookedConfig extends EtaConfig {
-  transformer?: Transformer;
+  transform: Transform;
 }
 
 class EtaHooked extends Eta {
-  public transformer?: Transformer | undefined;
+  public transform: Transform;
 
   constructor(config?: Partial<EtaHookedConfig>) {
-    const { transformer = (str: string): string => str, ...etaConfig } = config || {};
+    const { transform = (str: string): string => str, ...etaConfig } = config || {};
     super(etaConfig);
-    this.transformer = transformer;
+    this.transform = transform;
   }
 
   override readFile = (path: string): string => {
@@ -29,11 +38,11 @@ class EtaHooked extends Eta {
       throw err;
     }
 
-    if (!this.transformer) {
+    if (!this.transform) {
       return res;
     }
 
-    return this.transformer(res, path);
+    return this.transform(res, path);
   };
 }
 
