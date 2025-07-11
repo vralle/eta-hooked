@@ -38,13 +38,7 @@ jobs:
     name: Publish to npm
     needs: build
     runs-on: ubuntu-latest
-
-    if: |
-      github.event_name == 'release' && github.event.release.target_commitish == 'main' ||
-      github.event_name == 'push' && github.ref_type == 'tag' && startsWith(github.ref, 'refs/tags/v') &&
-      github.ref != '' && github.ref != null && github.ref != 'undefined' &&
-      github.base_ref == 'refs/heads/main'
-
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
