@@ -5,7 +5,7 @@ import EtaHooked, { type EtaHookedConfig } from "../src/index.ts";
 
 const FIXTURES_DIR = join(__dirname, "__fixtures__");
 
-const mockTransformer = (content: string, filename: string) => {
+const mockTransform = (content: string, filename: string) => {
   if (filename.toLocaleLowerCase().endsWith(".md")) {
     return `<div>${content.trim()}</div>`;
   }
@@ -16,7 +16,7 @@ describe("Unit Tests", () => {
   let etaHooked: EtaHooked;
 
   beforeEach(() => {
-    etaHooked = new EtaHooked({ transformer: mockTransformer });
+    etaHooked = new EtaHooked({ transform: mockTransform });
   });
 
   afterEach(() => {
@@ -25,16 +25,16 @@ describe("Unit Tests", () => {
 
   describe("constructor", () => {
     it("should initialize with default config", () => {
-      expect(etaHooked.transformer).toBeDefined();
+      expect(etaHooked.transform).toBeDefined();
       expect(etaHooked.config).toBeDefined();
     });
 
-    it("should initialize with custom transformer", () => {
+    it("should initialize with custom transform", () => {
       const config: Partial<EtaHookedConfig> = {
-        transformer: mockTransformer,
+        transform: mockTransform,
       };
       etaHooked = new EtaHooked(config);
-      expect(etaHooked.transformer).toBe(mockTransformer);
+      expect(etaHooked.transform).toBe(mockTransform);
     });
 
     it("should initialize with custom eta config", () => {
@@ -47,12 +47,12 @@ describe("Unit Tests", () => {
   });
 
   describe("readFile", () => {
-    it("should read raw content without transformer", () => {
+    it("should read raw content without transform", () => {
       const result = etaHooked.readFile(join(FIXTURES_DIR, "simple.html"));
       expect(result).toContain("<h1>Title</h1>");
     });
 
-    it("should handle template with transformer", () => {
+    it("should handle template with transform", () => {
       const result = etaHooked.readFile(join(FIXTURES_DIR, "simple.md"));
       expect(result).toContain("<div># Hello</div>");
     });
