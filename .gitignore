@@ -28,9 +28,3 @@ coverage/
 # OS
 .DS_Store
 Thumbs.db
-
-# Output
-build/
-
-# lockfiles
-package-lock.json
