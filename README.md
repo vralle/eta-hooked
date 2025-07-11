@@ -15,7 +15,7 @@
 ### Installation
 
 ```bash
-npm i -D @vralle/eta-hoked
+npm i -D @vralle/eta-hooked
 ```
 
 ---
