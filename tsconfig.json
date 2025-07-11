@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    // Type Checking
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
+    // Modules
+    "allowArbitraryExtensions": false,
+    "module": "nodenext",
+    "types": ["node", "eta"],
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    // Emit
+    "declaration": true,
+    // Interop Constraints
+    "esModuleInterop": true,
+    "isolatedModules": false, // true
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    // Language and Environment
+    "target": "es2022",
+    "lib": ["ES2022"],
+    // Completeness
+    "skipLibCheck": false, // true
+
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+}

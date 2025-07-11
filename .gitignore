@@ -1,0 +1,36 @@
+# Node
+node_modules/
+dist/
+.cache/
+.npm/
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+.history/
+
+# Testing
+coverage/
+*.lcov
+/.nyc_output
+
+# CI
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output
+build/
+
+# lockfiles
+package-lock.json
