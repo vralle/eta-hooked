@@ -14,7 +14,7 @@
     // Modules
     "allowArbitraryExtensions": false,
     "module": "nodenext",
-    "types": ["node", "eta"],
+    "types": ["node"],
     "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     // Emit
